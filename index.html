@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pobierz aplikację Mój Lewiatan</title>
+</head>
+<body>
+    <h1>Pobierz aplikację Mój Lewiatan</h1>
+    <p>Kliknij poniższy przycisk, aby pobrać aplikację odpowiednią dla Twojego urządzenia:</p>
+    <button id="downloadAppButton">Pobierz aplikację</button>
+
+    <script>
+    function redirectToAppStore() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        var androidPlayStoreUrl = "https://play.google.com/store/apps/details?id=pl.lewiatan.mojlewiatan";
+        var iOSAppStoreUrl = "https://apps.apple.com/pl/app/m%C3%B3j-lewiatan/id1506749167?l=pl";
+
+        if (/android/i.test(userAgent)) {
+            window.location.href = androidPlayStoreUrl;
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.location.href = iOSAppStoreUrl;
+        } else {
+            alert("Przepraszamy, nie mogliśmy wykryć Twojego urządzenia mobilnego. Odwiedź naszą stronę internetową, aby dowiedzieć się więcej o aplikacji.");
+        }
+    }
+
+    document.getElementById('downloadAppButton').addEventListener('click', redirectToAppStore);
+    </script>
+</body>
+</html>
